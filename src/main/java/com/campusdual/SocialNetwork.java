@@ -2,6 +2,7 @@ package com.campusdual;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class SocialNetwork {
     List<Usuario> usuarios = new ArrayList<>();
@@ -70,4 +71,17 @@ public class SocialNetwork {
             }
         }
     }
+    private void unfollowerUser(){
+        usuarioactivo.listarFollowers();
+        String username= Utils.string("Usuario al que se quiere dejar de seguir: ");
+        usuarioactivo.getFollowers().stream().filter(user -> {
+            if (!user.getUsername().equalsIgnoreCase(username)){
+            return user;
+            }
+        }).collect(Collectors.toList());
+
+    }
+
 }
+
+

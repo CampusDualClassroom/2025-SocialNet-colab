@@ -37,7 +37,14 @@ public class Usuario {
         this.followers = followers;
     }
 
-    public void addfollowers (Usuario username){
+    public void addfollowers(Usuario username) {
         followers.add(username);
+    }
+
+    public void listarFollowers() {
+        for (int i = 0; i < this.followers.size(); i++) {
+            System.out.println(followers.get(i).getUsername());
+
+        }
     }
 }
