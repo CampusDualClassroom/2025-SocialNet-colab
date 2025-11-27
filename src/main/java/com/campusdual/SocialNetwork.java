@@ -6,6 +6,7 @@ import java.util.List;
 public class SocialNetwork {
     List<Usuario> usuarios = new ArrayList<>();
     List<Post> post = new ArrayList<>();
+    Usuario usuarioactivo = null;
 
     private void createUsers(){
         String nuevoUsuario = Utils.string("Añade nombre del nuevo usuario");
@@ -46,6 +47,27 @@ public class SocialNetwork {
 
 
 
+        }
+    }
+    private void login (){
+        String username= Utils.string("Nombre usuario: ");
+        for (int i = 0; i<this.usuarios.size(); i ++){
+          Usuario usertemporal =  usuarios.get(i);
+          if (usertemporal.getUsername().equalsIgnoreCase(username)){
+              usuarioactivo = usertemporal;
+          }
+        }
+        if (usuarioactivo== null){
+            System.out.println("Usuario no encontrado.");
+        }
+    }
+    private void followuser(){
+        String username= Utils.string("Usuario al que se quiere seguir: ");
+        for (int i = 0; i<this.usuarios.size(); i ++){
+            Usuario usertemporal =  usuarios.get(i);
+            if (usertemporal.getUsername().equalsIgnoreCase(username)){
+                usuarioactivo.addfollowers(usertemporal);
+            }
         }
     }
 }

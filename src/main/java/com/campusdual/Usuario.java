@@ -36,4 +36,8 @@ public class Usuario {
     public void setFollowers(List<Usuario> followers) {
         this.followers = followers;
     }
+
+    public void addfollowers (Usuario username){
+        followers.add(username);
+    }
 }
