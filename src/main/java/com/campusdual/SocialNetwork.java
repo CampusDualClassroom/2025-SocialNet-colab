@@ -74,12 +74,10 @@ public class SocialNetwork {
     private void unfollowerUser(){
         usuarioactivo.listarFollowers();
         String username= Utils.string("Usuario al que se quiere dejar de seguir: ");
-        usuarioactivo.getFollowers().stream().filter(user -> {
-            if (!user.getUsername().equalsIgnoreCase(username)){
-            return user;
-            }
-        }).collect(Collectors.toList());
-
+        List<Usuario> temporalSeguidores = usuarioactivo.getFollowers().stream()
+            .filter(user -> !user.getUsername().equalsIgnoreCase(username))
+            .collect(Collectors.toList());
+        usuarioactivo.setFollowers(temporalSeguidores);
     }
 
 }
